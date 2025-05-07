@@ -12,7 +12,10 @@ function Home() {
         <Link to="/contacts">
           <button>📋 View Contacts</button>
         </Link>
-        
+        <Link to="/add">
+          <button>✏️ Add Contacts</button>
+        </Link>
+      
         <Link to="/search">
           <button>🔍 Search by Phone</button>
         </Link>
