@@ -9,7 +9,7 @@ Features
 
 ## Technologies Used
 
-    Frontend: React, Axios, Tailwind CSS
+    Frontend: React, Axios, Css
 
     Backend API: Java (Servlets and JDBC) - Contact Registry API
     
