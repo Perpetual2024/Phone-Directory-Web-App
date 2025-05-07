@@ -78,16 +78,9 @@ API Endpoints Used
     ViewContacts: A user can view all there contacts
 
    ## Future Improvements
+   1. Implement a search bar that allows users to search for contacts by name, phone number
    
     Add Pagination: Improve performance and usability when displaying large lists of contacts.
-
-    Implement Filtering and Sorting: Allow users to filter contacts by gender, age range, organization, etc.
-
-    Validation on Frontend: Add form validation to catch input errors before API calls are made.
-
-    Responsive Design: Enhance layout and styles for better mobile and tablet experiences.
-
-    Unit and Integration Tests: Add tests for UI components and API integration to ensure stability.
 
     Authentication: Secure the app with login functionality (e.g., JWT or session-based).
 
