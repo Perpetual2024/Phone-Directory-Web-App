@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import '../css/Home.css'
 
 function Home() {
   return (
@@ -11,9 +12,7 @@ function Home() {
         <Link to="/contacts">
           <button>📋 View Contacts</button>
         </Link>
-        <Link to="/add">
-          <button>➕ Add Contact</button>
-        </Link>
+        
         <Link to="/search">
           <button>🔍 Search by Phone</button>
         </Link>

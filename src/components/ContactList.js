@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../css/ContactList.css'
 
 function ContactList() {
   const [contacts, setContacts] = useState([]);
@@ -45,13 +46,14 @@ const fetchContacts = async () => {
         contacts.map((contact) => (
           <div key={contact.id} className="contact-card">
             <p><strong>Name:</strong> {contact.fullName}</p>
-            <p><strong>Phone:</strong> {contact.phoneNumber}</p>
-            <p><strong>Email:</strong> {contact.emailAddress}</p>
-            <p><strong>ID No:</strong> {contact.idNumber}</p>
-            <p><strong>DOB:</strong> {contact.dateOfBirth}</p>
-            <p><strong>Gender:</strong> {contact.gender}</p>
-            <p><strong>County:</strong> {contact.county}</p>
-            <p><strong>Organization:</strong> {contact.organizationName}</p>
+            <p><strong>📞Phone:</strong> {contact.phoneNumber}</p>
+        
+            <p><strong>✉️Email:</strong> {contact.emailAddress}</p>
+            <p><strong>🆔ID No:</strong> {contact.idNumber}</p>
+            <p><strong>🎂DOB:</strong> {contact.dateOfBirth}</p>
+            <p><strong>🧑Gender:</strong> {contact.gender}</p>
+            <p><strong>🏙️County:</strong> {contact.county}</p>
+            <p><strong>🏢Organization:</strong> {contact.organizationName}</p>
 
             
           </div>

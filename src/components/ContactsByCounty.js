@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import '../css/ContactCounty.css'
 
 const ContactsByCounty = () => {
   const [county, setCounty] = useState("");
@@ -36,24 +37,31 @@ const ContactsByCounty = () => {
   };
 
   return (
-    <div>
+    <div className="county-container">
       <h2>Find Contacts by County</h2>
-      <input
-        type="text"
-        placeholder="Enter county"
-        value={county}
-        onChange={(e) => setCounty(e.target.value)}
-      />
-      <button onClick={fetchContactsByCounty}>Search</button>
+
+      <div className="county-search">
+        <input
+          type="text"
+          placeholder="Enter county"
+          value={county}
+          onChange={(e) => setCounty(e.target.value)}
+        />
+        <button onClick={fetchContactsByCounty}>Search</button>
+      </div>
 
       {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
 
       {contacts.length > 0 && (
-        <ul>
+        <ul className="contacts-list">
           {contacts.map((contact) => (
             <li key={contact.id}>
-              {contact.fullName} - {contact.phoneNumber} - {contact.emailAddress} - {contact.idNumber}-{contact.dateOfBirth} - {contact.gender} - {contact.county} - {contact.organizationName}
+              <strong>{contact.fullName}</strong><br />
+              📞 {contact.phoneNumber} | ✉️ {contact.emailAddress}<br />
+              🆔 {contact.idNumber} | 🎂 {contact.dateOfBirth}<br />
+              🧑 {contact.gender} | 🏙️ {contact.county}<br />
+              🏢 {contact.organizationName}
             </li>
           ))}
         </ul>
