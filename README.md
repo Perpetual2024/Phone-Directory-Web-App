@@ -1,70 +1,101 @@
-# 
+# Phone Directory Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a web application built using React that allows users to search for contacts by phone number and county of residence. It interacts with the Contact Registry API to fetch and display contact details.
+Features
 
-## Available Scripts
+    Search for contacts by phone number.
 
-In the project directory, you can run:
+    Search for contacts by county of residence.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    Frontend: React, Axios, Tailwind CSS
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    Backend API: Java (Servlets and JDBC) - Contact Registry API
+    
 
-### `npm test`
+## Getting Started
+ 1 : Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    Node.js and npm
 
-### `npm run build`
+    Contact Registry API running (Backend API for fetching contacts).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ 2 : Setup Instructions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    Clone the repository:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+git clone https://github.com/your-username/phone-directory-web-app.git
 
-### `npm run eject`
+Go to the project directory:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+cd phone-directory-web-app
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install the required dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Start the React development server:
 
-## Learn More
+    npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    This will start the frontend application at http://localhost:3000.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+API Endpoints Used
+1. Get Contact by Phone Number
 
-### Code Splitting
+    URL: /contacts/by-phone
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    Method: GET
 
-### Analyzing the Bundle Size
+    Query Parameters:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+        phoneNumber: The phone number of the contact you want to search for.
 
-### Making a Progressive Web App
+    Example URL:
+    http://localhost:8080/contact-registry/contacts/by-phone?phoneNumber=0712345678
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   2. Get Contacts by County
 
-### Advanced Configuration
+    URL: /contacts/by-county
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    Method: GET
 
-### Deployment
+    Query Parameters:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+        county: The county to search for contacts.
 
-### `npm run build` fails to minify
+    Example URL:
+    http://localhost:8080/contact-registry/contacts/by-county?county=Nairobi
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ## Overview
+   The React app consists of two primary components for searching:
+
+    PhoneSearch: Allows users to search for a contact using a phone number.
+
+    CountySearch: Allows users to search for contacts by county of residence.
+
+    ViewContacts: A user can view all there contacts
+
+   ## Future Improvements
+   
+    Add Pagination: Improve performance and usability when displaying large lists of contacts.
+
+    Implement Filtering and Sorting: Allow users to filter contacts by gender, age range, organization, etc.
+
+    Validation on Frontend: Add form validation to catch input errors before API calls are made.
+
+    Responsive Design: Enhance layout and styles for better mobile and tablet experiences.
+
+    Unit and Integration Tests: Add tests for UI components and API integration to ensure stability.
+
+    Authentication: Secure the app with login functionality (e.g., JWT or session-based).
+
+    Contact Update/Delete: Allow users to edit or delete existing contacts.
+
+    Better Error Handling UI: Display clearer messages and retry options when API calls fail.
+
+    User Notifications: Show success/failure toasts when actions are performed.
+
+
+   
