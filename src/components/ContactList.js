@@ -3,34 +3,42 @@ import axios from 'axios';
 
 function ContactList() {
   const [contacts, setContacts] = useState([]);
+  const [loading, setLoading] = useState(true); // To show a loading state
+  const [error, setError] = useState(null); // To handle errors
 
-  const API_URI = "http://localhost:8080/contact-registry/contacts"
+  const API_URI = "http://localhost:8080/contact-registry/contacts";
 
-  useEffect(() => {
-    fetchContacts();
-  }, []);
+useEffect(() => {
+  fetchContacts();
+}, []);
 
-  const fetchContacts = async () => {
-    try {
-      const response = await axios.get(API_URI);
-      setContacts(response.data);
-    } catch (error) {
-      console.error("Error fetching contacts:", error);
-    }
-  };
+const fetchContacts = async () => {
+  try {
+    const response = await axios.get(API_URI, {
+      headers: {
+        Accept: "application/json"
+      }
+    });
 
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`${API_URI}/${id}`);
-      fetchContacts(); // refresh list
-    } catch (error) {
-      console.error("Error deleting contact:", error);
-    }
-  };
+    console.log(response.data);
+    setContacts(response.data); 
+    setLoading(false); 
+  } catch (error) {
+    setError("Error fetching contacts. Please try again later.");
+    setLoading(false);
+    console.error("Error fetching contacts:", error);
+  }
+};
+
+  
+
+ 
 
   return (
     <div className="list-container">
       <h2>📋 Available Contacts</h2>
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
       {contacts.length === 0 ? (
         <p>No contacts available.</p>
       ) : (
@@ -45,15 +53,12 @@ function ContactList() {
             <p><strong>County:</strong> {contact.county}</p>
             <p><strong>Organization:</strong> {contact.organizationName}</p>
 
-            <div className="actions">
-              <button onClick={() => handleDelete(contact.id)}>🗑 Delete</button>
-              <button onClick={() => alert("Redirect to Edit")}>✏️ Edit</button>
-            </div>
+            
           </div>
         ))
       )}
     </div>
   );
-};
+}
 
 export default ContactList;

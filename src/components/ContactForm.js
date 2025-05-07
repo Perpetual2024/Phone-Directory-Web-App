@@ -1,44 +1,46 @@
+// src/components/ContactForm.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const ContactForm = () => {
-  const { id } = useParams(); // null for new, contact ID for edit
-  const navigate = useNavigate();
-  const isEditing = !!id;
+function ContactForm() {
+    const {id} = useParams();
+    const navigate = useNavigate();
+    const isEditing = !!id;
 
   const [formData, setFormData] = useState({
     fullName: '',
     phoneNumber: '',
-    email: '',
+    emailAddress: '',
     idNumber: '',
     dateOfBirth: '',
     gender: '',
     county: '',
-    organization: ''
+    organizationName: '',
   });
 
-  const API_URL = "http://localhost:8080/api/contacts";
+  const API_URI = "https://localhost:8080/contact-registry/contacts";
 
   useEffect(() => {
     if (isEditing) {
-      axios.get(`${API_URL}/${id}`)
-        .then(res => setFormData(res.data))
-        .catch(err => console.error("Error loading contact", err));
+        axios.get(`${API_URI}/${id}`)
+        .then(response => setFormData(response.data))
+        .catch(error => console.error("Error loading contact", error))
     }
   }, [id]);
 
+
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value });
+    setFormData({...formData, [e.target.name]: e.target.value}); 
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (isEditing) {
-        await axios.put(`${API_URL}/${id}`, formData);
+        await axios.put(`${API_URI}/${id}`, formData);
       } else {
-        await axios.post(API_URL, formData);
+        await axios.post(API_URI, formData);
       }
       navigate("/contacts");
     } catch (err) {
@@ -53,13 +55,13 @@ const ContactForm = () => {
       <input name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} placeholder="Phone Number" />
       <input name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
       <input name="idNumber" value={formData.idNumber} onChange={handleChange} placeholder="ID Number" />
-      <input name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} placeholder="Date of Birth" />
-      <input name="gender" value={formData.gender} onChange={handleChange} placeholder="Gender" />
-      <input name="county" value={formData.county} onChange={handleChange} placeholder="County" />
-      <input name="organization" value={formData.organization} onChange={handleChange} placeholder="Organization" />
+      <input name="dateOfBirth" type="date" value={formData.dateOfBirth} onChange={handleChange} required />
+      <input name="gender" placeholder="Gender" value={formData.gender} onChange={handleChange} required />
+      <input name="county" placeholder="County" value={formData.county} onChange={handleChange} required />
+      <input name="organizationName" placeholder="Organization Name" value={formData.organizationName} onChange={handleChange} />
       <button type="submit">{isEditing ? "Update" : "Create"}</button>
     </form>
   );
-};
+}
 
 export default ContactForm;
