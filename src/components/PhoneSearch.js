@@ -13,19 +13,19 @@ const PhoneSearch = () => {
       setError("Please enter a phone number.");
       return;
     }
-
+  
     setLoading(true);
     setError("");
     setContact(null);
-
+  
     try {
-      const response = await axios.get(`http://localhost:8080/contact-registry/contacts/by-phone`, {
-        params: { phoneNumber },
+      const response = await axios.get("http://localhost:8080/contact-registry/contacts/by-phone", {
+        params: { phoneNumber: phoneNumber.trim() },
         headers: {
           Accept: "application/json",
         },
       });
-
+  
       console.log(response.data);
       setContact(response.data);
     } catch (err) {
@@ -38,7 +38,7 @@ const PhoneSearch = () => {
       setLoading(false);
     }
   };
-
+  
   return (
     <div className="phone-search-container">
       <h2 className="phone-search-title">Search Contact by Phone</h2>
@@ -60,12 +60,14 @@ const PhoneSearch = () => {
       {contact && (
         <div className="phone-search-result">
           <h3>Contact Found:</h3>
-          <p><strong>Name:</strong> {contact.name}</p>
-          <p><strong>Email:</strong> {contact.emailAddress}</p>
-          <p><strong>ID:</strong> {contact.idNumber}</p>
-          <p><strong>County:</strong> {contact.county}</p>
-          <p><strong>Gender:</strong> {contact.gender}</p>
-          <p><strong>Organization:</strong> {contact.organizationName}</p>
+          <p><strong>Name:</strong> {contact.fullName}</p>
+          <p><strong>✉️Email:</strong> {contact.emailAddress}</p>
+          <p><strong>🆔ID:</strong> {contact.idNumber}</p>
+          <p><strong>🎂DOB:</strong> {contact.dateOfBirth}</p>
+          <p><strong>📞 Phone:</strong> {contact.phoneNumber}</p>
+          <p><strong>🏙️County:</strong> {contact.county}</p>
+          <p><strong>🧑Gender:</strong> {contact.gender}</p>
+          <p><strong>🏢 Organization:</strong> {contact.organizationName}</p>
         </div>
       )}
     </div>
