@@ -22,10 +22,12 @@ function Home() {
         <Link to="/filter">
           <button>📍 Filter by County</button>
         </Link>
+        
+        
       </div>
     </div>
   );
   
 }
 
-export default Home
+export default Home;
