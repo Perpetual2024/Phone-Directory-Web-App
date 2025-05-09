@@ -1,0 +1,76 @@
+.contact-edit {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .contact-edit h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .contact-edit form > div {
+    margin-bottom: 15px;
+  }
+  
+  .contact-edit label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  .contact-edit input,
+  .contact-edit select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+  }
+  
+  .contact-edit input:focus,
+  .contact-edit select:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
+  }
+  
+  .contact-edit button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-edit button:hover {
+    background-color: #0056b3;
+  }
+  
+  .contact-edit .cancel {
+    margin-left: 10px;
+    background-color: #dc3545;
+  }
+  
+  .contact-edit .cancel:hover {
+    background-color: #c82333;
+  }
+  
+  @media (max-width: 600px) {
+    .contact-edit {
+      margin: 20px;
+      padding: 20px;
+    }
+  }
+  

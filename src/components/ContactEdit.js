@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "../css/ContactEdit.css"
 
 function ContactEdit() {
     const { id } = useParams(); // Get contact ID from URL
